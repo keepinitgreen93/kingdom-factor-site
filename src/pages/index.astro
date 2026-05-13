@@ -10,7 +10,7 @@ import { offers, pillars, people, bookHighlights, seoOpportunities } from "../li
   <section class="home-hero polished-hero">
     <div class="hero-copy">
       <p class="eyebrow">Christian business leadership</p>
-      <h1>A trusted room for Christian owners carrying real decisions.</h1>
+      <h1>Ensure you're in the room where wisdom surrounds you.</h1>
       <p>Kingdom Factor helps faith-driven owners and leaders integrate biblical conviction with practical business counsel through peer advisory, executive coaching, marketplace ministry, and source-backed leadership resources.</p>
       <div class="actions">
         <a class="btn btn-primary" href="/apply/">Schedule an introductory conversation</a>
@@ -57,7 +57,7 @@ import { offers, pillars, people, bookHighlights, seoOpportunities } from "../li
     <SectionHeader eyebrow="Choose your path" title="One Kingdom Factor platform. Two clear leadership lanes." text="The site preserves one SEO authority base while routing established executives and emerging owners into the right next step." align="center" />
     <div class="lane-grid">
       {people.map((person) => (
-        <article class={`lane-card leader-lane ${person.lane === "John lane" ? "executive" : "community"}`}>
+        <article class={`lane-card leader-lane ${person.href === "/executive-coaching/" ? "executive" : "community"}`}>
           <div class="portrait-fallback" aria-hidden="true">{person.fallbackInitials}</div>
           <p class="eyebrow">{person.lane}</p>
           <h3>{person.name}</h3>
@@ -118,5 +118,5 @@ import { offers, pillars, people, bookHighlights, seoOpportunities } from "../li
     </div>
   </section>
 
-  <CTA />
+  <CTA text="Find the right path for the season you are leading through. Start with a fit conversation. We will help you discern whether to begin with a peer advisory group, engage in executive coaching, explore marketplace ministry resources, or pursue a strategic combination of these options to move you toward your goals." />
 </Base>

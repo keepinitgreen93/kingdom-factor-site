@@ -15,9 +15,9 @@ export const pages: Record<string, PageSpec> = {
     slug: "peer-advisory-groups",
     title: "Christian Peer Advisory Groups",
     eyebrow: "Peer advisory",
-    heading: "A trusted circle for Christian owners who do not want to lead alone.",
+    heading: "A trusted room for Christian owners and executives carrying real decisions.",
     description:
-      "Kingdom Factor peer advisory groups are designed for owners and leaders who need wise counsel, accountability, shared learning, and a room where faith and business decisions can be held together.",
+      "The confidential peer advisory group where faith, leadership pressures, business decisions, and wise counsel are brought into the room.",
     primaryCta: { label: "Explore the next step", href: "/apply/" },
     secondaryCta: { label: "Join a Leadership Circle", href: "/leadership-circle/" },
     sections: [
@@ -44,13 +44,17 @@ export const pages: Record<string, PageSpec> = {
   "executive-coaching": {
     slug: "executive-coaching",
     title: "Executive Coaching Intensive",
-    eyebrow: "John lane",
-    heading: "Private advisory for Christian leaders carrying real decision-making weight.",
+    eyebrow: "Dr. John Lybarger",
+    heading: "Private Executive Coaching with Dr. John Lybarger.",
     description:
-      "The John lane is for established Christian owners, executives, and senior leaders who need clarity, resilience, stewardship, and trusted counsel around meaningful decisions.",
+      "Dr. John Lybarger helps leaders carrying executive-level responsibility gain clarity, make sound decisions, strengthen culture, and lead with disciplined stewardship through expert coaching, pastoral discernment, and executive counsel shaped by real business ownership.",
     primaryCta: { label: "Request a fit conversation", href: "/apply/" },
     secondaryCta: { label: "Compare peer advisory", href: "/peer-advisory-groups/" },
     sections: [
+      {
+        title: "Executive Coaching, Peer Advisory, and Marketplace Ministry",
+        body: "Three integrated lanes of counsel for Christian leaders carrying real responsibility — coaching for personal clarity, peer advisory for shared wisdom, and marketplace ministry for faith-integrated leadership in the day-to-day.",
+      },
       {
         title: "A premium advisory path",
         body: "Source materials reference a 12-week Executive Coaching Intensive with weekly one-on-one sessions, between-session support, and peer advisory integration. Pricing and detailed public terms remain approval-gated.",
@@ -69,16 +73,16 @@ export const pages: Record<string, PageSpec> = {
   "peer-community": {
     slug: "peer-community",
     title: "Peer Community for Emerging Christian Owners",
-    eyebrow: "Jim lane",
+    eyebrow: "Peer Community with James Lybarger",
     heading: "A community path for founders and owners building from faith, values, and story.",
     description:
-      "The Jim lane helps emerging owners, solopreneurs, startup founders, and smaller-business leaders find language, confidence, and peers for the journey.",
+      "The James Lybarger path helps emerging owners, solopreneurs, startup founders, and smaller business leaders find practical reflection, confidence, and trusted peers for the journey.",
     primaryCta: { label: "Explore the community path", href: "/leadership-circle/" },
     secondaryCta: { label: "View books and resources", href: "/books/" },
     sections: [
       {
         title: "For leaders still forming the path",
-        body: "This lane is warmer and more accessible than the executive coaching path. It emphasizes story, values alignment, confidence, community, and practical faith integration.",
+        body: "The James Lybarger path helps emerging owners, solopreneurs, startup founders, and smaller business leaders find practical reflection, confidence, and trusted peers for the journey. It emphasizes story, values alignment, confidence, community, and practical faith integration.",
         bullets: ["Story and identity", "Values-based decisions", "Community and confidence", "Faith in the everyday work"],
       },
       {
@@ -99,7 +103,7 @@ export const pages: Record<string, PageSpec> = {
     sections: [
       {
         title: "What attendees should learn",
-        body: "Why isolation and decision fatigue are common for owners, what a Leadership Circle is, and how trusted peers can support accountability and renewal.",
+        body: "Why isolation and decision fatigue are common for owners and executives, what a Leadership Circle is, and how trusted peers can support accountability and renewal.",
         bullets: ["The cost of leading alone", "The power of trusted counsel", "What a circle looks like", "A safe next step"],
       },
       {

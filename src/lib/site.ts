@@ -103,7 +103,7 @@ export const people = [
   {
     name: "Dr. John Lybarger",
     role: "Executive coaching, peer advisory, and marketplace ministry",
-    lane: "John lane",
+    lane: "Executive Coaching",
     image: "/images/people/john-lybarger-2026.jpg",
     fallbackInitials: "JL",
     summary:
@@ -113,7 +113,7 @@ export const people = [
   {
     name: "James “Jim” Lybarger",
     role: "Peer community, story, values, and emerging-owner pathway",
-    lane: "Jim lane",
+    lane: "Peer Community",
     image: "/images/people/jim-lybarger-headshot.jpg",
     fallbackInitials: "JL",
     summary:
