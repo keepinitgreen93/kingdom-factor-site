@@ -4,6 +4,8 @@ import PageHero from "../components/PageHero.astro";
 import CTA from "../components/CTA.astro";
 import Schema from "../components/Schema.astro";
 import { people } from "../lib/site";
+
+const emailSignupForm = "https://api.leadconnectorhq.com/widget/form/PH3XIjJVSBiIqjdVGylp";
 ---
 <Base title="About" description="Purpose Driven Consulting, LLC and Kingdom Factor have partnered to bring peer advisory, executive coaching, and marketplace ministry consulting together for Christian business leaders." canonical="/about/">
   <Schema type="WebPage" title="About Purpose Driven Consulting, LLC and Kingdom Factor" description="Purpose Driven Consulting, LLC and Kingdom Factor have partnered to bring peer advisory, executive coaching, and marketplace ministry consulting together for Christian business leaders." path="/about/" breadcrumbs={[{ name: "Home", item: "/" }, { name: "About", item: "/about/" }]} />
@@ -52,7 +54,7 @@ import { people } from "../lib/site";
       <p>We believe that mankind was created in the image of God, but because of sin, was alienated from God. Only through faith, trusting in Christ alone for salvation, which was made possible by His death and resurrection, can that alienation be removed.</p>
     </div>
   </section>
-  <CTA />
+  <CTA signupFormUrl={emailSignupForm} />
 </Base>
 
 <style>
