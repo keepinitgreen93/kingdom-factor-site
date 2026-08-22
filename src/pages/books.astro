@@ -8,6 +8,7 @@ type BookEntry = { title: string; subtitle?: string; url?: string | null; linkLa
 type BookGroup = { category: string; books: BookEntry[] };
 
 const johnAuthorPage = "https://www.amazon.com/author/drjohnslybarger";
+const emailSignupForm = "https://api.leadconnectorhq.com/widget/form/PH3XIjJVSBiIqjdVGylp";
 
 const johnBookGroups: BookGroup[] = [
   {
@@ -80,6 +81,21 @@ const jimBooks: BookEntry[] = [
       <p>Dr. Lybarger's books span peer advisory, marketplace ministry, executive coaching, biblical accountability, organizational change, and Christ-centered leadership development.</p>
       <a class="author-page-link" href={johnAuthorPage} target="_blank" rel="noopener">See Dr. Lybarger's full Amazon author page →</a>
     </div>
+
+    <aside class="email-signup" aria-labelledby="email-signup-title">
+      <div class="email-signup-copy">
+        <p class="eyebrow">Stay connected</p>
+        <h3 id="email-signup-title">Get leadership insights by email</h3>
+        <p>Sign up for news, practical guidance, and updates from Dr. Lybarger and Purpose Driven Consulting.</p>
+      </div>
+      <iframe
+        src={emailSignupForm}
+        title="Sign up for email updates from Purpose Driven Consulting"
+        class="email-signup-frame"
+        loading="lazy"
+      ></iframe>
+    </aside>
+
     {johnBookGroups.map((group) => (
       <div class="book-group">
         <h3 class="book-group-title">{group.category}</h3>
@@ -168,6 +184,40 @@ const jimBooks: BookEntry[] = [
     color: var(--burgundy-dark, #4a0f15);
     border-color: rgba(100, 31, 36, 0.7);
   }
+  .email-signup {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(360px, 1.15fr);
+    align-items: center;
+    gap: clamp(1.5rem, 4vw, 3.5rem);
+    max-width: min(1080px, calc(100% - clamp(2rem, 8vw, 4rem)));
+    margin: 0 auto clamp(3rem, 5vw, 4.5rem);
+    padding: clamp(1.5rem, 3.5vw, 2.75rem);
+    background: linear-gradient(135deg, rgba(255, 250, 242, 0.98), rgba(246, 238, 225, 0.92));
+    border: 1px solid rgba(168, 148, 131, 0.38);
+    border-radius: 28px;
+    box-shadow: 0 24px 60px rgba(74, 15, 21, 0.08);
+  }
+  .email-signup-copy h3 {
+    margin: 0.4rem 0 0.75rem;
+    font-family: "Libre Baskerville", Georgia, serif;
+    font-size: clamp(1.65rem, 2.7vw, 2.35rem);
+    line-height: 1.15;
+    color: var(--burgundy-dark, #4a0f15);
+    text-wrap: balance;
+  }
+  .email-signup-copy > p:last-child {
+    margin: 0;
+    color: rgba(81, 70, 63, 0.9);
+    text-wrap: pretty;
+  }
+  .email-signup-frame {
+    display: block;
+    width: 100%;
+    height: 920px;
+    border: 0;
+    border-radius: 18px;
+    background: #fff;
+  }
   .book-group {
     max-width: var(--max);
     margin: 0 auto;
@@ -248,6 +298,13 @@ const jimBooks: BookEntry[] = [
     cursor: default;
   }
   @media (max-width: 760px) {
+    .email-signup {
+      grid-template-columns: 1fr;
+      max-width: 100%;
+      padding: 1.25rem;
+      border-radius: 22px;
+    }
+    .email-signup-frame { height: 1020px; }
     .book-group, .books-grid { width: 100%; max-width: 100%; padding-inline: 0; }
     .book-card { width: 100%; max-width: none; min-height: 0; }
     .book-card h3 { font-size: 1.02rem; line-height: 1.42; max-width: 100%; letter-spacing: -0.005em; }
