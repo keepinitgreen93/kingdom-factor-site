@@ -7,7 +7,7 @@ import Schema from "../components/Schema.astro";
 type BookEntry = { title: string; subtitle?: string; url?: string | null; linkLabel?: string };
 type BookGroup = { category: string; books: BookEntry[] };
 
-const johnAuthorPage = "https://www.amazon.com/author/drjohnslybarger";
+const johnAuthorPage = "https://johnlybargerbooks.com/";
 const emailSignupForm = "https://api.leadconnectorhq.com/widget/form/PH3XIjJVSBiIqjdVGylp";
 
 const johnBookGroups: BookGroup[] = [
@@ -79,7 +79,7 @@ const jimBooks: BookEntry[] = [
       <p class="eyebrow">Dr. John S. Lybarger</p>
       <h2>Books by Dr. Lybarger</h2>
       <p>Dr. Lybarger's books span peer advisory, marketplace ministry, executive coaching, biblical accountability, organizational change, and Christ-centered leadership development.</p>
-      <a class="author-page-link" href={johnAuthorPage} target="_blank" rel="noopener">See Dr. Lybarger's full Amazon author page →</a>
+      <a class="author-page-link" href={johnAuthorPage} target="_blank" rel="noopener">See Dr. Lybarger's author page →</a>
     </div>
 
     <aside class="email-signup" aria-labelledby="email-signup-title">
