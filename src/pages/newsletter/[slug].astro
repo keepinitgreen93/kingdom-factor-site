@@ -1,0 +1,250 @@
+---
+import Base from "../../layouts/Base.astro";
+import Schema from "../../components/Schema.astro";
+import { newsletterBySlug } from "../../lib/newsletters";
+
+const issue = newsletterBySlug(Astro.params.slug);
+if (!issue) return Astro.redirect("/newsletter/");
+
+const pagePath = `/newsletter/${issue.slug}/`;
+---
+
+<Base title={`${issue.month} Newsletter`} description={issue.description} canonical={pagePath}>
+  <Schema
+    type="WebPage"
+    title={`${issue.month} Newsletter: ${issue.title}`}
+    description={issue.description}
+    path={pagePath}
+    breadcrumbs={[
+      { name: "Home", item: "/" },
+      { name: "Newsletter", item: "/newsletter/" },
+      { name: issue.month, item: pagePath },
+    ]}
+  />
+
+  <article class="newsletter-issue">
+    <header class="issue-masthead">
+      <a href="/newsletter/" aria-label="Return to the newsletter archive">
+        <img
+          src="/images/brand/kf-pdc-lead-better-together.png"
+          alt="Purpose Driven Consulting, LLC and Kingdom Factor — Lead Better Together"
+          width="2172"
+          height="724"
+        />
+      </a>
+      <p>{issue.publishedLabel}</p>
+    </header>
+
+    <section class="issue-hero">
+      <p class="issue-eyebrow">From the book <em>Stop Leading Alone</em></p>
+      <h1>{issue.title}</h1>
+      <p class="issue-theme">{issue.theme}</p>
+    </section>
+
+    <section class="issue-section issue-letter">
+      <p>Dear friend,</p>
+      <p>Leadership can look strong on the outside while growing strained on the inside. You may keep making decisions, caring for people, and moving the mission forward while quietly carrying more than anyone knows.</p>
+      <p><em>Stop Leading Alone</em> was written for Christian business and ministry leaders facing that tension. The answer is not to abandon responsibility. It is to stop confusing isolation with strength.</p>
+      <p>This month, we invite you to consider one honest question: <strong>Where do you need a wiser room?</strong></p>
+      <p>With you in the journey,<br /><strong>John &amp; Jim Lybarger</strong></p>
+      <blockquote>
+        <p>“{issue.quote}”</p>
+        <cite>— <em>Stop Leading Alone</em></cite>
+      </blockquote>
+    </section>
+
+    <section class="issue-section" aria-labelledby="signs-title">
+      <p class="issue-eyebrow">Leadership reflection</p>
+      <h2 id="signs-title">Three signs that isolation may be shaping your leadership</h2>
+      <div class="signal-list">
+        {issue.signs.map((sign, index) => (
+          <article class="signal-card">
+            <span aria-hidden="true">{index + 1}</span>
+            <div>
+              <h3>{sign.title}</h3>
+              <p>{sign.text}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+      <p>These signs do not mean you are weak or failing. They may mean it is time to seek connection, counsel, and accountability before pressure distorts your perspective.</p>
+    </section>
+
+    <section class="issue-section" aria-labelledby="shifts-title">
+      <p class="issue-eyebrow">The framework</p>
+      <h2 id="shifts-title">Five shifts toward healthier leadership</h2>
+      <p>The book describes five movements that help leaders become more integrated, discerning, and faithful over time.</p>
+      <div class="shift-list">
+        {issue.shifts.map((shift) => (
+          <div><span>From {shift.from}</span><strong>to {shift.to}</strong></div>
+        ))}
+      </div>
+    </section>
+
+    <section class="issue-section practice-section" aria-labelledby="practice-title">
+      <p class="issue-eyebrow">This month’s practice</p>
+      <h2 id="practice-title">Hold one 20-minute “wiser room” conversation</h2>
+      <p>Choose one trusted person who can listen without flattery, speak with courage, and keep confidence.</p>
+      <ol>
+        {issue.practice.map((step) => (
+          <li><div><h3>{step.title}</h3><p>{step.text}</p></div></li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="issue-section resource-section" aria-labelledby="resource-title">
+      <p class="issue-eyebrow">Featured interactive resource</p>
+      <h2 id="resource-title">{issue.resource.title}</h2>
+      <p>{issue.resource.text}</p>
+      <a class="issue-button" href={issue.resource.href}>{issue.resource.label}</a>
+    </section>
+
+    <section class="issue-section continue-section" aria-labelledby="continue-title">
+      <p class="issue-eyebrow">Continue the journey</p>
+      <h2 id="continue-title">Real conversations. Real support. Real leadership growth.</h2>
+      <p>Explore <em>Stop Leading Alone</em> and other books by John and Jim, or learn how Purpose Driven Consulting and Kingdom Factor help Christian leaders grow through executive coaching, consulting, and peer advisory community.</p>
+      <div class="issue-actions">
+        <a class="issue-button" href="http://www.johnlybargerbooks.com">Explore the books</a>
+        <a class="issue-button issue-button--navy" href="http://www.purpose-drivenconsulting.net">Visit Purpose Driven Consulting</a>
+      </div>
+    </section>
+
+    <section class="author-section" aria-labelledby="authors-title">
+      <p class="issue-eyebrow">About the authors</p>
+      <h2 id="authors-title">John and Jim Lybarger</h2>
+      <div class="author-grid">
+        <article class="author-card">
+          <img src="/images/people/john-lybarger-2026.jpg" alt="John S. Lybarger, Ph.D." width="448" height="448" loading="lazy" />
+          <div>
+            <h3>John S. Lybarger, Ph.D.</h3>
+            <p>John is an organizational psychologist, Master Certified Coach, ordained minister, and founder of Purpose Driven Consulting. With more than 30 years in leadership development, he helps Christian owners, executives, and ministry leaders grow in clarity, courage, integrity, and eternal perspective.</p>
+          </div>
+        </article>
+        <article class="author-card">
+          <img src="/images/people/jim-lybarger-headshot.jpg" alt="James “Jim” C. Lybarger" width="1170" height="1092" loading="lazy" />
+          <div>
+            <h3>James “Jim” C. Lybarger</h3>
+            <p>Jim is a business mentor, Christian life coach, executive with Purpose Driven Consulting, and Certified Kingdom Factor Coach. He brings a grounded, practical perspective on responsibility, resilience, personal change, and second chances.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <nav class="issue-back" aria-label="Newsletter navigation">
+      <a href="/newsletter/">← Return to all newsletters</a>
+    </nav>
+  </article>
+</Base>
+
+<style>
+  .newsletter-issue {
+    --issue-navy: #0a2240;
+    --issue-blue: #0a4775;
+    --issue-light-blue: #e1edf5;
+    --issue-red: #a32727;
+    --issue-ink: #15263a;
+    --issue-muted: #40566b;
+    max-width: 820px;
+    margin: clamp(2rem, 5vw, 4rem) auto;
+    background: #fff;
+    border: 1px solid #c7dce9;
+    border-radius: 18px;
+    overflow: hidden;
+    color: var(--issue-ink);
+    box-shadow: 0 22px 70px rgba(10, 34, 64, 0.12);
+  }
+  .issue-masthead {
+    background: var(--issue-light-blue);
+    border-bottom: 1px solid #b8d2e3;
+    text-align: center;
+  }
+  .issue-masthead a { display: block; padding: clamp(1rem, 3vw, 1.6rem) clamp(1rem, 4vw, 2.2rem); }
+  .issue-masthead img { width: 100%; max-width: 700px; margin: 0 auto; border-radius: 12px; }
+  .issue-masthead > p {
+    padding: 0.7rem 1rem;
+    background: var(--issue-navy);
+    color: #fff;
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .issue-hero,
+  .issue-section,
+  .author-section {
+    padding: clamp(2rem, 5vw, 3.4rem) clamp(1.35rem, 6vw, 4.2rem);
+    border-bottom: 1px solid #d7e4ec;
+  }
+  .issue-hero { border-top: 4px solid var(--issue-blue); }
+  .issue-hero h1 { color: var(--issue-navy); font-size: clamp(2.15rem, 5vw, 3.65rem); max-width: 15ch; }
+  .issue-theme { margin-top: 1.2rem; color: var(--issue-muted); font-size: clamp(1.08rem, 2vw, 1.25rem); line-height: 1.65; max-width: 64ch; }
+  .issue-eyebrow {
+    margin-bottom: 0.8rem;
+    color: var(--issue-red);
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .issue-section h2,
+  .author-section h2 { color: var(--issue-navy); font-size: clamp(1.65rem, 3vw, 2.35rem); }
+  .issue-section > p:not(.issue-eyebrow),
+  .author-section > p:not(.issue-eyebrow) { margin-top: 1rem; line-height: 1.75; }
+  .issue-letter > p:first-child { margin-top: 0; }
+  blockquote {
+    margin: 2rem 0 0;
+    padding: 1.5rem 1.7rem;
+    background: #eaf3f9;
+    border-left: 5px solid var(--issue-red);
+    color: var(--issue-navy);
+  }
+  blockquote p { font-family: "Libre Baskerville", Georgia, serif; font-size: clamp(1.2rem, 2.4vw, 1.55rem); line-height: 1.55; }
+  blockquote cite { display: block; margin-top: 0.8rem; color: var(--issue-muted); font-size: 0.78rem; font-weight: 800; font-style: normal; text-transform: uppercase; letter-spacing: 0.1em; }
+  .signal-list { display: grid; gap: 0.8rem; margin: 1.7rem 0; }
+  .signal-card { display: grid; grid-template-columns: 42px 1fr; gap: 1rem; padding: 1.15rem; background: #f7fafc; border: 1px solid #d8e5ed; border-radius: 12px; }
+  .signal-card > span { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 50%; background: var(--issue-red); color: #fff; font-weight: 800; }
+  .signal-card h3 { color: var(--issue-navy); font-size: 1.08rem; }
+  .signal-card p { margin-top: 0.35rem; color: var(--issue-muted); line-height: 1.6; }
+  .shift-list { margin-top: 1.5rem; border: 1px solid #c7dce9; border-radius: 12px; overflow: hidden; }
+  .shift-list > div { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid #d8e5ed; }
+  .shift-list > div:last-child { border-bottom: 0; }
+  .shift-list span,
+  .shift-list strong { padding: 0.85rem 1rem; }
+  .shift-list span { color: var(--issue-muted); background: #f7fafc; }
+  .shift-list strong { color: var(--issue-navy); }
+  .practice-section { margin: clamp(1rem, 3vw, 2rem); border: 0; border-radius: 14px; background: var(--issue-navy); color: #fff; }
+  .practice-section h2,
+  .practice-section h3 { color: #fff; }
+  .practice-section > p:not(.issue-eyebrow),
+  .practice-section li p { color: #dfeaf2; }
+  .practice-section .issue-eyebrow { color: #f1b0aa; }
+  .practice-section ol { margin: 1.5rem 0 0; padding: 0; list-style: none; counter-reset: practice; display: grid; gap: 1rem; }
+  .practice-section li { counter-increment: practice; display: grid; grid-template-columns: 40px 1fr; gap: 1rem; }
+  .practice-section li::before { content: counter(practice); width: 38px; height: 38px; display: grid; place-items: center; border-radius: 50%; background: var(--issue-red); color: #fff; font-weight: 800; }
+  .practice-section li h3 { font-family: "Plus Jakarta Sans", sans-serif; font-size: 1.02rem; }
+  .practice-section li p { margin-top: 0.3rem; }
+  .resource-section { margin: 0 clamp(1rem, 3vw, 2rem) clamp(1rem, 3vw, 2rem); border: 1px solid #ecd8c6; border-radius: 14px; background: #fff8f1; }
+  .issue-button { display: inline-flex; margin-top: 1.4rem; padding: 0.9rem 1.2rem; border-radius: 999px; background: var(--issue-red); color: #fff; text-decoration: none; font-weight: 800; }
+  .issue-button--navy { background: var(--issue-blue); }
+  .issue-actions { display: flex; flex-wrap: wrap; gap: 0.7rem; }
+  .author-section { background: #f3f8fb; }
+  .author-grid { display: grid; gap: 1rem; margin-top: 1.5rem; }
+  .author-card { display: grid; grid-template-columns: 110px 1fr; gap: 1.2rem; align-items: start; padding: 1.2rem; background: #fff; border: 1px solid #c7dce9; border-radius: 12px; }
+  .author-card img { width: 110px; height: 110px; object-fit: cover; border-radius: 50%; border: 3px solid #d5b26f; }
+  .author-card h3 { color: var(--issue-navy); font-size: 1.15rem; }
+  .author-card p { margin-top: 0.45rem; color: var(--issue-muted); font-size: 0.94rem; line-height: 1.65; }
+  .issue-back { padding: 1.5rem clamp(1.35rem, 6vw, 4.2rem); background: var(--issue-navy); }
+  .issue-back a { color: #fff; font-weight: 800; text-decoration: none; }
+  @media (max-width: 640px) {
+    .newsletter-issue { margin: 0; border-radius: 0; border-left: 0; border-right: 0; }
+    .shift-list > div { grid-template-columns: 1fr; }
+    .shift-list span { padding-bottom: 0.25rem; }
+    .shift-list strong { padding-top: 0.25rem; }
+    .author-card { grid-template-columns: 1fr; }
+    .author-card img { width: 88px; height: 88px; }
+  }
+  @media print {
+    .newsletter-issue { margin: 0; box-shadow: none; border: 0; }
+    .issue-back { display: none; }
+  }
+</style>
