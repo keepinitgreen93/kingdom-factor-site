@@ -14,6 +14,7 @@ export const nav = [
   { href: "/purpose-driven-consulting/", label: "Consulting" },
   { href: "/books/", label: "Books" },
   { href: "/blog/", label: "Blog" },
+  { href: "/newsletter/", label: "Newsletter" },
   { href: "/about/", label: "About" },
   { href: "/apply/", label: "Apply" },
 ];
@@ -29,6 +30,8 @@ export const publicRoutes = [
   { path: "/stop-leading-alone-workshop/", label: "Stop Leading Alone Workshop", priority: "0.8" },
   { path: "/stop-leading-alone-free-resources/", label: "Stop Leading Alone Free Resources", priority: "0.7" },
   { path: "/blog/", label: "Blog and Resources", priority: "0.7" },
+  { path: "/newsletter/", label: "Monthly Newsletter", priority: "0.7" },
+  { path: "/newsletter/august-2026/", label: "August 2026 Newsletter", priority: "0.6" },
   { path: "/about/", label: "About Purpose Driven Consulting and Kingdom Factor", priority: "0.7" },
   { path: "/apply/", label: "Apply", priority: "0.7" },
   { path: "/contact/", label: "Contact", priority: "0.6" },

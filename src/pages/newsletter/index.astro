@@ -1,0 +1,153 @@
+---
+import Base from "../../layouts/Base.astro";
+import PageHero from "../../components/PageHero.astro";
+import Schema from "../../components/Schema.astro";
+import { newsletters } from "../../lib/newsletters";
+
+const description =
+  "Monthly leadership letters from Purpose Driven Consulting and Kingdom Factor, featuring practical insights from Stop Leading Alone by John and Jim Lybarger.";
+---
+
+<Base title="Newsletter" description={description} canonical="/newsletter/">
+  <Schema
+    type="WebPage"
+    title="Purpose Driven Consulting and Kingdom Factor Newsletter"
+    description={description}
+    path="/newsletter/"
+    breadcrumbs={[
+      { name: "Home", item: "/" },
+      { name: "Newsletter", item: "/newsletter/" },
+    ]}
+  />
+
+  <PageHero
+    eyebrow="Monthly newsletter"
+    title="Leadership wisdom for the weight you carry."
+    text="Read each monthly leadership letter from Purpose Driven Consulting and Kingdom Factor. Every issue offers a practical idea from Stop Leading Alone, a reflection for the month, and a faithful next step."
+    primary={{ label: "Read the latest issue", href: `/newsletter/${newsletters[0].slug}/` }}
+    secondary={{ label: "Explore Stop Leading Alone resources", href: "/stop-leading-alone-free-resources/" }}
+    image="/images/generated/leadership-table-1440.webp"
+    imageMobile="/images/generated/leadership-table-mobile.webp"
+  />
+
+  <section class="newsletter-intro" aria-labelledby="newsletter-intro-title">
+    <img
+      src="/images/brand/kf-pdc-lead-better-together.png"
+      alt="Purpose Driven Consulting, LLC and Kingdom Factor — Lead Better Together"
+      width="2172"
+      height="724"
+    />
+    <div>
+      <p class="eyebrow">Real conversations. Real support. Real leadership growth.</p>
+      <h2 id="newsletter-intro-title">A monthly invitation to stop leading alone.</h2>
+      <p>Each issue is written for Christian business and ministry leaders who want to lead with clarity, courage, integrity, and eternal perspective.</p>
+    </div>
+  </section>
+
+  <section class="newsletter-archive" aria-labelledby="newsletter-archive-title">
+    <div class="section-header center">
+      <p class="eyebrow">Newsletter archive</p>
+      <h2 id="newsletter-archive-title">Read every monthly issue.</h2>
+      <p>Begin with August 2026 and return each month for a new practical reflection from <em>Stop Leading Alone</em>.</p>
+    </div>
+
+    <div class="newsletter-grid">
+      {newsletters.map((issue, index) => (
+        <article class="newsletter-card">
+          <p class="newsletter-month">{issue.month}{index === 0 ? " · Latest issue" : ""}</p>
+          <h3><a href={`/newsletter/${issue.slug}/`}>{issue.title}</a></h3>
+          <p>{issue.description}</p>
+          <a class="newsletter-link" href={`/newsletter/${issue.slug}/`}>Read the {issue.month} newsletter →</a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="newsletter-next-step" aria-labelledby="newsletter-next-step-title">
+    <div>
+      <p class="eyebrow">Continue the journey</p>
+      <h2 id="newsletter-next-step-title">Go deeper with the book and leadership resources.</h2>
+      <p>Explore books by John and Jim Lybarger, then use the interactive tools from <em>Stop Leading Alone</em> in your next honest leadership conversation.</p>
+    </div>
+    <div class="actions">
+      <a class="btn btn-primary" href="http://www.johnlybargerbooks.com">Explore the books</a>
+      <a class="btn btn-secondary" href="/stop-leading-alone-free-resources/">Interactive resources</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .newsletter-intro,
+  .newsletter-next-step {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: clamp(2.5rem, 5vw, 4.5rem) clamp(1rem, 4vw, 2rem);
+    display: grid;
+    grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr);
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: center;
+  }
+  .newsletter-intro {
+    background: #e1edf5;
+    border: 1px solid #bfd4e2;
+    border-radius: 32px;
+  }
+  .newsletter-intro img {
+    width: 100%;
+    border-radius: 18px;
+  }
+  .newsletter-intro h2,
+  .newsletter-next-step h2 { color: #0a2240; }
+  .newsletter-intro p:not(.eyebrow),
+  .newsletter-next-step p:not(.eyebrow) {
+    margin-top: 1rem;
+    color: #40566b;
+    font-size: 1.08rem;
+  }
+  .newsletter-archive {
+    padding: clamp(4rem, 7vw, 7rem) clamp(1rem, 4vw, 2rem);
+  }
+  .newsletter-grid {
+    max-width: 920px;
+    margin: 0 auto;
+    display: grid;
+    gap: 1rem;
+  }
+  .newsletter-card {
+    background: #fff;
+    border: 1px solid #c7dce9;
+    border-radius: 24px;
+    padding: clamp(1.5rem, 3vw, 2.4rem);
+    box-shadow: 0 18px 45px rgba(10, 34, 64, 0.08);
+  }
+  .newsletter-month {
+    color: #a32727;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .newsletter-card h3 { margin-top: 0.8rem; color: #0a2240; }
+  .newsletter-card h3 a { color: inherit; text-decoration: none; }
+  .newsletter-card > p:not(.newsletter-month) { margin-top: 0.9rem; color: #40566b; }
+  .newsletter-link {
+    display: inline-block;
+    margin-top: 1.2rem;
+    color: #a32727;
+    font-weight: 800;
+    text-decoration: none;
+  }
+  .newsletter-link:hover { text-decoration: underline; }
+  .newsletter-next-step {
+    margin-bottom: clamp(3rem, 6vw, 5rem);
+    border-top: 4px solid #0a4775;
+    background: #f6fafc;
+    border-radius: 24px;
+  }
+  .newsletter-next-step .actions { margin-top: 0; justify-content: flex-end; }
+  @media (max-width: 800px) {
+    .newsletter-intro,
+    .newsletter-next-step { grid-template-columns: 1fr; border-radius: 0; }
+    .newsletter-next-step .actions { justify-content: flex-start; }
+  }
+</style>
