@@ -1,0 +1,196 @@
+---
+const emailSignupForm = "https://api.leadconnectorhq.com/widget/form/PH3XIjJVSBiIqjdVGylp";
+---
+
+<div class="email-popup" data-email-popup>
+  <button class="email-popup-trigger" type="button" aria-haspopup="dialog" data-email-popup-open>
+    <span class="email-popup-trigger__eyebrow">Stay connected</span>
+    <span>Join our email list</span>
+  </button>
+
+  <dialog class="email-popup-dialog" aria-labelledby="email-popup-title" data-email-popup-dialog>
+    <button class="email-popup-close" type="button" aria-label="Close email sign-up" data-email-popup-close>×</button>
+    <div class="email-popup-panel">
+      <div class="email-popup-copy">
+        <p class="eyebrow">Stay connected</p>
+        <h2 id="email-popup-title">Join our email list</h2>
+        <p>Receive our newsletters, blogs, and event announcements in your inbox.</p>
+      </div>
+      <iframe
+        src={emailSignupForm}
+        title="Sign up for email updates from Purpose Driven Consulting"
+        class="email-popup-frame"
+        loading="lazy"
+      ></iframe>
+    </div>
+  </dialog>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-email-popup]").forEach((popup) => {
+    const dialog = popup.querySelector<HTMLDialogElement>("[data-email-popup-dialog]");
+    const openButton = popup.querySelector<HTMLButtonElement>("[data-email-popup-open]");
+    const closeButton = popup.querySelector<HTMLButtonElement>("[data-email-popup-close]");
+
+    if (!dialog || !openButton || !closeButton) return;
+
+    openButton.addEventListener("click", () => dialog.showModal());
+    closeButton.addEventListener("click", () => dialog.close());
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+    dialog.addEventListener("close", () => openButton.focus());
+  });
+</script>
+
+<style>
+  .email-popup-trigger {
+    position: fixed;
+    right: clamp(1rem, 2.5vw, 2rem);
+    bottom: clamp(1rem, 2.5vw, 2rem);
+    z-index: 30;
+    display: grid;
+    gap: 0.15rem;
+    min-width: 190px;
+    padding: 0.85rem 1.1rem;
+    border: 1px solid rgba(255, 255, 255, 0.34);
+    border-radius: 16px;
+    background: var(--burgundy, #641f24);
+    color: #fff;
+    box-shadow: 0 16px 38px rgba(47, 14, 18, 0.28);
+    font: inherit;
+    font-weight: 800;
+    line-height: 1.2;
+    text-align: left;
+    cursor: pointer;
+    transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+  }
+
+  .email-popup-trigger:hover {
+    transform: translateY(-2px);
+    background: var(--burgundy-dark, #4a0f15);
+    box-shadow: 0 20px 44px rgba(47, 14, 18, 0.34);
+  }
+
+  .email-popup-trigger:focus-visible,
+  .email-popup-close:focus-visible {
+    outline: 3px solid #f3c96d;
+    outline-offset: 3px;
+  }
+
+  .email-popup-trigger__eyebrow {
+    color: #f3c96d;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+
+  .email-popup-dialog {
+    position: relative;
+    width: min(720px, calc(100vw - 2rem));
+    max-height: min(92vh, 1080px);
+    margin: auto;
+    padding: 0;
+    border: 0;
+    border-radius: 24px;
+    background: #fffdf8;
+    color: var(--ink, #2f2925);
+    box-shadow: 0 30px 90px rgba(22, 8, 10, 0.4);
+    overflow: hidden;
+  }
+
+  .email-popup-dialog::backdrop {
+    background: rgba(30, 18, 16, 0.68);
+    backdrop-filter: blur(3px);
+  }
+
+  .email-popup-panel {
+    position: relative;
+    max-height: min(92vh, 1080px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .email-popup-copy {
+    padding: 2rem 4.5rem 0.75rem 2rem;
+  }
+
+  .email-popup-copy h2 {
+    margin: 0.35rem 0 0.65rem;
+    color: var(--burgundy-dark, #4a0f15);
+    font-family: "Libre Baskerville", Georgia, serif;
+    font-size: clamp(1.65rem, 4vw, 2.35rem);
+    line-height: 1.15;
+    text-wrap: balance;
+  }
+
+  .email-popup-copy p:last-child {
+    margin: 0;
+    color: rgba(81, 70, 63, 0.92);
+    text-wrap: pretty;
+  }
+
+  .email-popup-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1;
+    display: grid;
+    width: 2.5rem;
+    height: 2.5rem;
+    place-items: center;
+    padding: 0 0 0.15rem;
+    border: 1px solid rgba(100, 31, 36, 0.2);
+    border-radius: 999px;
+    background: #fff;
+    color: var(--burgundy-dark, #4a0f15);
+    font: inherit;
+    font-size: 1.75rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .email-popup-frame {
+    display: block;
+    width: 100%;
+    height: 920px;
+    border: 0;
+    background: #fff;
+  }
+
+  @media (max-width: 640px) {
+    .email-popup-trigger {
+      right: 0.75rem;
+      bottom: 0.75rem;
+      min-width: 0;
+      max-width: calc(100vw - 1.5rem);
+      padding: 0.75rem 0.9rem;
+      border-radius: 14px;
+    }
+
+    .email-popup-dialog {
+      width: calc(100vw - 1rem);
+      max-height: 94vh;
+      border-radius: 18px;
+    }
+
+    .email-popup-panel {
+      max-height: 94vh;
+    }
+
+    .email-popup-copy {
+      padding: 1.5rem 3.75rem 0.5rem 1.25rem;
+    }
+
+    .email-popup-frame {
+      height: 1020px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .email-popup-trigger {
+      transition: none;
+    }
+  }
+</style>
