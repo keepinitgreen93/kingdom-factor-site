@@ -13,6 +13,7 @@ export const nav = [
   { href: "/executive-coaching/", label: "Executive Coaching" },
   { href: "/purpose-driven-consulting/", label: "Consulting" },
   { href: "/books/", label: "Books" },
+  { href: "/stop-leading-alone-free-resources/", label: "Resources" },
   { href: "/blog/", label: "Blog" },
   { href: "/newsletter/", label: "Newsletter" },
   { href: "/about/", label: "About" },
