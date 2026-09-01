@@ -43,9 +43,8 @@ const pagePath = `/newsletter/${issue.slug}/`;
 
     <section class="issue-section issue-letter">
       <p>Dear friend,</p>
-      <p>Leadership can look strong on the outside while growing strained on the inside. You may keep making decisions, caring for people, and moving the mission forward while quietly carrying more than anyone knows.</p>
-      <p><em>Stop Leading Alone</em> was written for Christian business and ministry leaders facing that tension. The answer is not to abandon responsibility. It is to stop confusing isolation with strength.</p>
-      <p>This month, we invite you to consider one honest question: <strong>Where do you need a wiser room?</strong></p>
+      {issue.letter.map((paragraph) => <p>{paragraph}</p>)}
+      <p>This month, we invite you to consider one honest question: <strong>{issue.reflectionQuestion}</strong></p>
       <p>With you in the journey,<br /><strong>John &amp; Jim Lybarger</strong></p>
       <blockquote>
         <p>“{issue.quote}”</p>
@@ -55,7 +54,7 @@ const pagePath = `/newsletter/${issue.slug}/`;
 
     <section class="issue-section" aria-labelledby="signs-title">
       <p class="issue-eyebrow">Leadership reflection</p>
-      <h2 id="signs-title">Three signs that isolation may be shaping your leadership</h2>
+      <h2 id="signs-title">{issue.signsTitle}</h2>
       <div class="signal-list">
         {issue.signs.map((sign, index) => (
           <article class="signal-card">
@@ -67,13 +66,13 @@ const pagePath = `/newsletter/${issue.slug}/`;
           </article>
         ))}
       </div>
-      <p>These signs do not mean you are weak or failing. They may mean it is time to seek connection, counsel, and accountability before pressure distorts your perspective.</p>
+      <p>{issue.signsClosing}</p>
     </section>
 
     <section class="issue-section" aria-labelledby="shifts-title">
       <p class="issue-eyebrow">The framework</p>
-      <h2 id="shifts-title">Five shifts toward healthier leadership</h2>
-      <p>The book describes five movements that help leaders become more integrated, discerning, and faithful over time.</p>
+      <h2 id="shifts-title">{issue.frameworkTitle}</h2>
+      <p>{issue.frameworkIntro}</p>
       <div class="shift-list">
         {issue.shifts.map((shift) => (
           <div><span>From {shift.from}</span><strong>to {shift.to}</strong></div>
@@ -83,8 +82,8 @@ const pagePath = `/newsletter/${issue.slug}/`;
 
     <section class="issue-section practice-section" aria-labelledby="practice-title">
       <p class="issue-eyebrow">This month’s practice</p>
-      <h2 id="practice-title">Hold one 20-minute “wiser room” conversation</h2>
-      <p>Choose one trusted person who can listen without flattery, speak with courage, and keep confidence.</p>
+      <h2 id="practice-title">{issue.practiceTitle}</h2>
+      <p>{issue.practiceIntro}</p>
       <ol>
         {issue.practice.map((step) => (
           <li><div><h3>{step.title}</h3><p>{step.text}</p></div></li>
@@ -101,8 +100,8 @@ const pagePath = `/newsletter/${issue.slug}/`;
 
     <section class="issue-section continue-section" aria-labelledby="continue-title">
       <p class="issue-eyebrow">Continue the journey</p>
-      <h2 id="continue-title">Real conversations. Real support. Real leadership growth.</h2>
-      <p>Explore <em>Stop Leading Alone</em> and other books by John and Jim, or learn how Purpose Driven Consulting and Kingdom Factor help Christian leaders grow through executive coaching, consulting, and peer advisory community.</p>
+      <h2 id="continue-title">{issue.continueTitle}</h2>
+      <p>{issue.continueText}</p>
       <div class="issue-actions">
         <a class="issue-button" href="http://www.johnlybargerbooks.com">Explore the books</a>
         <a class="issue-button issue-button--navy" href="http://www.purpose-drivenconsulting.net">Visit Purpose Driven Consulting</a>
