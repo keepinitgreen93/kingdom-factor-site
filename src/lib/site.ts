@@ -38,7 +38,8 @@ export const publicRoutes = [
   { path: "/apply/", label: "Apply", priority: "0.7" },
   { path: "/contact/", label: "Contact", priority: "0.6" },
   { path: "/privacy-policy/", label: "Privacy Policy", priority: "0.3" },
-  { path: "/terms/", label: "Terms", priority: "0.3" },
+  { path: "/terms/", label: "Terms of Service", priority: "0.3" },
+  { path: "/disclaimer/", label: "Disclaimer", priority: "0.3" },
 ];
 
 export const offers = [

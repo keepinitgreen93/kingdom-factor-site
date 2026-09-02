@@ -28,7 +28,13 @@ import { nav } from "../lib/site";
   </div>
   <div class="footer-bottom">
     <span>© {new Date().getFullYear()} Kingdom Factor.</span>
-    <span><a href="/privacy-policy/">Privacy</a> · <a href="/terms/">Terms</a></span>
+    <span class="legal-links">
+      <a href="/privacy-policy/" data-astro-reload>Privacy Policy</a>
+      <span aria-hidden="true">·</span>
+      <a href="/terms/" data-astro-reload>Terms of Service</a>
+      <span aria-hidden="true">·</span>
+      <a href="/disclaimer/" data-astro-reload>Disclaimer</a>
+    </span>
   </div>
 </footer>
 
@@ -49,5 +55,16 @@ import { nav } from "../lib/site";
     color: var(--gold, #d5b26f);
     margin: 0.65rem 0 0.9rem;
     max-width: 22ch;
+  }
+  .legal-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    justify-content: flex-end;
+  }
+  @media (max-width: 720px) {
+    .legal-links {
+      justify-content: flex-start;
+    }
   }
 </style>
