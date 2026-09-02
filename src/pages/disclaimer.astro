@@ -1,0 +1,19 @@
+---
+import Base from "../layouts/Base.astro";
+import TermageddonPolicy from "../components/TermageddonPolicy.astro";
+
+const policyId = "YlVNMEszZHhZMVkyY0RSQlkxRTlQUT09";
+---
+
+<Base
+  title="Disclaimer"
+  description="Disclaimer for the Purpose Driven Consulting, LLC website."
+  canonical="/disclaimer/"
+  hideEmailSignup={true}
+>
+  <section class="legal-page">
+    <p class="eyebrow">Legal</p>
+    <h1>Disclaimer</h1>
+    <TermageddonPolicy policyId={policyId} label="Disclaimer" />
+  </section>
+</Base>

@@ -11,9 +11,10 @@ interface Props {
   canonical?: string;
   noindex?: boolean;
   hideChrome?: boolean;
+  hideEmailSignup?: boolean;
 }
 
-const { title, description = site.description, canonical = Astro.url.pathname, noindex = false, hideChrome = false } = Astro.props;
+const { title, description = site.description, canonical = Astro.url.pathname, noindex = false, hideChrome = false, hideEmailSignup = false } = Astro.props;
 const pageTitle = title === site.name ? site.name : `${title} | ${site.name}`;
 const canonicalUrl = new URL(canonical, site.url).toString();
 ---
@@ -40,7 +41,7 @@ const canonicalUrl = new URL(canonical, site.url).toString();
       <slot />
     </main>
     {!hideChrome && <Footer />}
-    {!hideChrome && <EmailSignupPopup />}
+    {!hideChrome && !hideEmailSignup && <EmailSignupPopup />}
     <script is:inline>
       (() => {
         const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

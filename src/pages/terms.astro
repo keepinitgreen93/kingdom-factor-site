@@ -1,6 +1,19 @@
 ---
 import Base from "../layouts/Base.astro";
+import TermageddonPolicy from "../components/TermageddonPolicy.astro";
+
+const policyId = "YVVaUVpVb3hVa0ppT1V4UVJYYzlQUT09";
 ---
-<Base title="Terms" description="Draft terms placeholder for Kingdom Factor." canonical="/terms/">
-  <section class="legal-page"><p class="eyebrow">Draft legal page</p><h1>Terms of Use</h1><p>This placeholder exists for site structure only. Final terms require client approval and legal review before public launch.</p><h2>No professional advice claim</h2><p>Final disclaimers should be reviewed and approved before publication.</p><h2>Contact</h2><p>[APPROVAL REQUIRED: public legal contact email.]</p></section>
+
+<Base
+  title="Terms of Service"
+  description="Terms of Service for the Purpose Driven Consulting, LLC website."
+  canonical="/terms/"
+  hideEmailSignup={true}
+>
+  <section class="legal-page">
+    <p class="eyebrow">Legal</p>
+    <h1>Terms of Service</h1>
+    <TermageddonPolicy policyId={policyId} label="Terms of Service" />
+  </section>
 </Base>

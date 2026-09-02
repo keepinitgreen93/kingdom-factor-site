@@ -1,0 +1,79 @@
+---
+interface Props {
+  policyId: string;
+  label: string;
+}
+
+const { policyId, label } = Astro.props;
+const policyUrl = `https://policies.termageddon.com/api/policy/${policyId}`;
+---
+
+<div
+  id={policyId}
+  class="policy_embed_div legal-policy"
+  aria-live="polite"
+  aria-busy="true"
+  data-termageddon-policy-id={policyId}
+>
+  Please wait while the policy is loaded. If it does not load, please
+  <a
+    rel="nofollow"
+    aria-label={`click here to view the ${label.toLowerCase()}`}
+    href={policyUrl}
+    target="_blank"
+  >click here to view the policy</a>.
+</div>
+
+<script is:inline>
+  (() => {
+    const script = document.currentScript;
+    const initialPolicy = script?.previousElementSibling;
+    const policyId = initialPolicy?.getAttribute("data-termageddon-policy-id");
+    if (!policyId) return;
+
+    const loadPolicy = async () => {
+      const policy = document.getElementById(policyId);
+      if (!policy || ["loading", "loaded"].includes(policy.dataset.termageddonState)) return;
+
+      policy.dataset.termageddonState = "loading";
+      const endpoint = `https://embed.termageddon.com/api/render/${policyId}?origin=${encodeURIComponent(window.location.href)}`;
+
+      try {
+        const response = await fetch(endpoint, { headers: { Accept: "text/html" } });
+        if (!response.ok) throw new Error(`Termageddon returned ${response.status}`);
+        policy.innerHTML = await response.text();
+        policy.dataset.termageddonState = "loaded";
+      } catch (error) {
+        console.error("Unable to load Termageddon policy", error);
+        policy.dataset.termageddonState = "error";
+      } finally {
+        policy.setAttribute("aria-busy", "false");
+      }
+    };
+
+    void loadPolicy();
+    document.addEventListener("astro:page-load", loadPolicy, { once: true });
+  })();
+</script>
+
+<style is:global>
+  .legal-policy {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .legal-policy *,
+  .legal-policy *::before,
+  .legal-policy *::after {
+    box-sizing: border-box;
+    max-width: 100%;
+  }
+
+  .legal-policy table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+  }
+</style>
