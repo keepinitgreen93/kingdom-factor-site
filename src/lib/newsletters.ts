@@ -26,6 +26,77 @@ export interface NewsletterIssue {
 
 export const newsletters: NewsletterIssue[] = [
   {
+    slug: "november-2026",
+    month: "November 2026",
+    publishedLabel: "Monthly Leadership Letter · November 2026",
+    title: "What Your Team Learns From What You Repeat",
+    description:
+      "A practical culture check for Christian leaders who want their stated values to become daily team experience, drawn from Stop Leading Alone.",
+    subject: "What Your Team Learns From What You Repeat",
+    preheader:
+      "A four-step culture check for turning stated values into daily leadership practice.",
+    theme: "Culture grows from the daily patterns your leadership makes normal.",
+    letter: [
+      "Your team learns from more than your plans, speeches, or values statements. They learn from what happens in meetings, how tension is handled, what receives praise, what gets clarified, and what quietly slides.",
+      "Over time, repeated moments become the lived culture. People notice whether truth can be spoken, whether expectations stay clear, whether mistakes lead to growth, and whether leaders act in ways that match their convictions.",
+      "Stop Leading Alone reminds us that culture is not fixed. Leaders can help reshape it by changing what they repeat, clarify, reward, and confront.",
+    ],
+    reflectionQuestion: "What is my daily leadership teaching people to believe is normal here?",
+    quote: "Culture is not mostly what is stated. Culture is what is reinforced.",
+    signsTitle: "Three signs your culture may be teaching a different lesson than your values",
+    signs: [
+      {
+        title: "People read your mood more than your expectations.",
+        text: "When direction changes with pressure or tone, the team learns to watch the leader instead of trusting a clear standard.",
+      },
+      {
+        title: "Hard conversations keep getting postponed.",
+        text: "People begin guessing instead of knowing. Standards become uneven, and quiet frustration replaces direct, respectful truth.",
+      },
+      {
+        title: "The behavior you reward conflicts with the value you name.",
+        text: "You may speak about teamwork, honesty, or care for people while daily recognition favors individual heroics, silence, or constant availability.",
+      },
+    ],
+    signsClosing: "These signs are not an invitation to blame yourself or your team. They are an invitation to notice what has become normal and take responsibility for one healthier pattern.",
+    frameworkTitle: "Four movements from stated values to lived culture",
+    frameworkIntro: "Values become culture when people can see and experience them in repeated behavior.",
+    shifts: [
+      { from: "values on paper", to: "observable behavior" },
+      { from: "unclear expectations", to: "clear, shared standards" },
+      { from: "avoiding tension", to: "direct, dignifying conversation" },
+      { from: "occasional emphasis", to: "consistent reinforcement" },
+    ],
+    practiceTitle: "Take a 20-minute culture reinforcement audit",
+    practiceIntro: "Choose one value you want your team to experience more clearly, then work through these four steps.",
+    practice: [
+      {
+        title: "Name the value.",
+        text: "Which value matters most in this season: honesty, trust, stewardship, teamwork, courage, or something else?",
+      },
+      {
+        title: "Notice the pattern.",
+        text: "What repeated meeting habit, response, reward, or silence is teaching people something different?",
+      },
+      {
+        title: "Define the behavior.",
+        text: "What would this value look like in one observable action your team can understand and repeat?",
+      },
+      {
+        title: "Reinforce it this week.",
+        text: "Clarify the expectation, model it yourself, recognize it when you see it, and address the old pattern with dignity.",
+      },
+    ],
+    resource: {
+      title: "Team Alignment Assessment",
+      text: "Use this assessment to see whether your team has shared clarity around purpose, roles, communication, trust, decisions, and daily values.",
+      href: "/stop-leading-alone-free-resources/#team-alignment-assessment",
+      label: "Open the Team Alignment Assessment",
+    },
+    continueTitle: "Make your values visible in daily leadership.",
+    continueText: "Explore Stop Leading Alone and other books by John and Jim, or learn how Purpose Driven Consulting and Kingdom Factor help Christian leaders grow through executive coaching, consulting, and peer advisory community.",
+  },
+  {
     slug: "october-2026",
     month: "October 2026",
     publishedLabel: "Monthly Leadership Letter · October 2026",
